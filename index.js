@@ -24,15 +24,17 @@ function increment (){
         if(time.milisecend>=100){
             time.secend++ ;
             time.milisecend -= 100 ;
+            if (time.secend>=60) {
+                time.minuts++ ;
+                time.secend -= 60 ;        
+                if (time.minuts>=60) {
+                    time.hours++ ;
+                    time.minuts -= 60 ;
+                 }
+            }
         }
-        if (time.secend>=60) {
-            time.minuts++ ;
-            time.secend -= 60 ;
-        }
-        if (time.minuts>=60) {
-            time.hours++ ;
-            time.minuts -= 60 ;
-        }
+
+
 
         result.textContent = `${time.hours.toString().padStart(2,0)} : ${time.minuts.toString().padStart(2,0)} : ${time.secend.toString().padStart(2,0)} : ${time.milisecend.toString().padStart(2,0)}`;
         isrunnig = true ; 
